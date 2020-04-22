@@ -1,17 +1,17 @@
-package com.senlainc.task3;
+package com.senlainc.number;
 
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int number = new Random().nextInt(899) + 100;
-        int digit = 0;
-        int[] numbers = new int[3];
-        for (int i = 0, j = 1; i < 3; ++i, j = j * 10) {
-            numbers[i] = (number / j) % 10;
-            if (digit < numbers[i]) {
-                digit = numbers[i];
+        int number = new Random().nextInt(900) + 100;
+        int digit = 0, j = 1, d;
+        while (j != 1000) {
+            d = (number / j) % 10;
+            if (digit < d) {
+                digit = d;
             }
+            j *= 10;
         }
         System.out.print("Результат:\n" +
                 number + ": случайно сгенерированное трёхзначное натуральное число\n" +
