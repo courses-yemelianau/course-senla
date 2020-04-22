@@ -1,4 +1,4 @@
-package com.senlainc.task3;
+package com.senlainc.shop;
 
 public class Flower {
 
@@ -43,16 +43,6 @@ public class Flower {
         this(1, "Flower", "Colorful", "Wonderful");
     }
 
-    Flower(double price) {
-        this();
-        this.price = price;
-    }
-
-    Flower(String name) {
-        this();
-        this.name = name;
-    }
-
     Flower(double price, String name, String color, String description) {
         this.price = price;
         this.name = name;
@@ -63,7 +53,7 @@ public class Flower {
     @Override
     public String toString() {
         return String.format(
-                "Price: %f, Name: %s, Color: %s, Description: %s\n",
+                "Price: %f, Name: %s, Color: %s, Description: %s",
                 price,
                 name,
                 color,

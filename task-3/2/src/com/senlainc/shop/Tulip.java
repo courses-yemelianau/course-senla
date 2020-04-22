@@ -1,4 +1,4 @@
-package com.senlainc.task3;
+package com.senlainc.shop;
 
 public class Tulip extends Flower {
 
@@ -7,8 +7,7 @@ public class Tulip extends Flower {
     }
 
     Tulip(double price) {
-        this();
-        setPrice(price);
+        this(price, "Red", "Beautiful");
     }
 
     Tulip(double price, String color, String description) {

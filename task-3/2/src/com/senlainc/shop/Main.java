@@ -1,4 +1,4 @@
-package com.senlainc.task3;
+package com.senlainc.shop;
 
 public class Main {
     public static void main(String[] args) {

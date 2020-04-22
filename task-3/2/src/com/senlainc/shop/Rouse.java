@@ -1,4 +1,4 @@
-package com.senlainc.task3;
+package com.senlainc.shop;
 
 public class Rouse extends Flower {
 
@@ -7,8 +7,7 @@ public class Rouse extends Flower {
     }
 
     Rouse(double price) {
-        this();
-        setPrice(price);
+        this(price, "Red", "Barbed");
     }
 
     Rouse(double price, String color, String description) {

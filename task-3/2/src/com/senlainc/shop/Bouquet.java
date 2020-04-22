@@ -1,4 +1,4 @@
-package com.senlainc.task3;
+package com.senlainc.shop;
 
 public class Bouquet {
 
@@ -10,26 +10,25 @@ public class Bouquet {
         bouquet = new Flower[count];
     }
 
-    void countPrice() {
-        totalPrice = 0;
-        for (int i = 0; i < count; ++i) {
-            totalPrice += bouquet[i].getPrice();
-        }
+    private void addPrice(int cost) {
+        totalPrice += cost;
     }
 
     void add(Flower[] flowers) {
+        int cost = 0;
         for (Flower flower : flowers) {
             if (bouquet.length > count) {
                 bouquet[count++] = flower;
+                cost += flower.getPrice();
             }
         }
-        countPrice();
+        addPrice(cost);
     }
 
     void check() {
         System.out.print(String.format("Total Price: %f\nTotal Count: %d\n\n", totalPrice, bouquet.length));
         for (Flower flower : bouquet) {
-            System.out.print(flower.toString());
+            System.out.println(flower.toString());
         }
         System.out.print("\nThank you for your purchase.\n");
     }
