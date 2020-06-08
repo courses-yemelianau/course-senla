@@ -1,4 +1,4 @@
-package com.senlainc.assembly.iface;
+package com.senlainc.assembly.interfaces;
 
 public interface Product {
     void installFirstPart(ProductPart productPart);

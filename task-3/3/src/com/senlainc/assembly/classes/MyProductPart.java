@@ -1,8 +1,8 @@
-package com.senlainc.assembly.cls;
+package com.senlainc.assembly.classes;
 
-import com.senlainc.assembly.iface.ProductPart;
+import com.senlainc.assembly.interfaces.ProductPart;
 
-public class ProductPartClass implements ProductPart {
+public class MyProductPart implements ProductPart {
     private final String name;
 
     @Override
@@ -10,7 +10,7 @@ public class ProductPartClass implements ProductPart {
         return name;
     }
 
-    ProductPartClass(String name) {
+    MyProductPart(String name) {
         this.name = name;
         System.out.println("Product Part is Created!");
     }

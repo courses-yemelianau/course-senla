@@ -4,30 +4,30 @@ public class Bouquet {
 
     private double totalPrice = 0;
     private int count = 0;
-    private final Flower[] bouquet;
+    private final Flower[] flowers;
 
     Bouquet(int count) {
-        bouquet = new Flower[count];
+        flowers = new Flower[count];
     }
 
-    private void addPrice(int cost) {
+    private void addCost(int cost) {
         totalPrice += cost;
     }
 
     void add(Flower[] flowers) {
         int cost = 0;
         for (Flower flower : flowers) {
-            if (bouquet.length > count) {
-                bouquet[count++] = flower;
+            if (this.flowers.length > count) {
+                this.flowers[count++] = flower;
                 cost += flower.getPrice();
             }
         }
-        addPrice(cost);
+        addCost(cost);
     }
 
     void check() {
-        System.out.print(String.format("Total Price: %f\nTotal Count: %d\n\n", totalPrice, bouquet.length));
-        for (Flower flower : bouquet) {
+        System.out.print(String.format("Total Price: %f\nTotal Count: %d\n\n", totalPrice, flowers.length));
+        for (Flower flower : flowers) {
             System.out.println(flower.toString());
         }
         System.out.print("\nThank you for your purchase.\n");

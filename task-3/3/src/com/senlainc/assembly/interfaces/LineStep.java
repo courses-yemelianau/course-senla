@@ -1,4 +1,4 @@
-package com.senlainc.assembly.iface;
+package com.senlainc.assembly.interfaces;
 
 public interface LineStep {
     ProductPart buildProductPart();

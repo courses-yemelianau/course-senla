@@ -1,9 +1,9 @@
 package com.senlainc.assembly;
 
-import com.senlainc.assembly.cls.*;
+import com.senlainc.assembly.classes.*;
 
 public class Check {
     public static void main(String[] args) {
-        new AssemblyLineClass(new LineStepClass()).assembleProduct(new ProductClass());
+        new MyAssemblyLine(new MyLineStep()).assembleProduct(new MyProduct());
     }
 }

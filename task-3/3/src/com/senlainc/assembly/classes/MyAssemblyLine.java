@@ -1,12 +1,12 @@
-package com.senlainc.assembly.cls;
+package com.senlainc.assembly.classes;
 
-import com.senlainc.assembly.iface.AssemblyLine;
-import com.senlainc.assembly.iface.Product;
+import com.senlainc.assembly.interfaces.AssemblyLine;
+import com.senlainc.assembly.interfaces.Product;
 
-public class AssemblyLineClass implements AssemblyLine {
-    private final LineStepClass lineStep;
+public class MyAssemblyLine implements AssemblyLine {
+    private final MyLineStep lineStep;
 
-    public AssemblyLineClass(LineStepClass lineStep) {
+    public MyAssemblyLine(MyLineStep lineStep) {
         this.lineStep = lineStep;
         System.out.println("Assembly Line Created!");
     }

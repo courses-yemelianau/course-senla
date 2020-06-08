@@ -1,9 +1,9 @@
-package com.senlainc.assembly.cls;
+package com.senlainc.assembly.classes;
 
-import com.senlainc.assembly.iface.*;
+import com.senlainc.assembly.interfaces.*;
 
-public class ProductClass implements Product {
-    public ProductClass() {
+public class MyProduct implements Product {
+    public MyProduct() {
         System.out.println("Product is Created!");
     }
 

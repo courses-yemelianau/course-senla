@@ -2,10 +2,6 @@ package com.senlainc.shop;
 
 public class Violet extends Flower {
 
-    Violet() {
-        this(1, "Violet", "Pretty");
-    }
-
     Violet(double price) {
         this(price, "Violet", "Pretty");
     }

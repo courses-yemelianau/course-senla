@@ -2,10 +2,6 @@ package com.senlainc.shop;
 
 public class Rouse extends Flower {
 
-    Rouse() {
-        this(1, "Red", "Barbed");
-    }
-
     Rouse(double price) {
         this(price, "Red", "Barbed");
     }
