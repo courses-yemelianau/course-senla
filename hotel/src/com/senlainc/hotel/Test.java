@@ -3,23 +3,31 @@ package com.senlainc.hotel;
 public class Test {
     public static void main(String[] args) {
         Hotel hotel = new Hotel();
-        System.out.println(hotel.toString());
+        System.out.println(hotel);
         System.out.println();
 
-        hotel.getRooms()[0].setBusy(true);
-        hotel.getRooms()[1].setBusy(true);
-        hotel.getRooms()[1].setBusy(false);
+        hotel.addRoom().setPrice(99);
+        hotel.addRoom().setPrice(199);
+        hotel.addRoom().setPrice(299);
+        hotel.addService().setPrice(49);
 
-        hotel.getRooms()[2].setRepair(true);
-        hotel.getRooms()[3].setServe(true);
+        hotel.getRooms()[0].settle();
+        hotel.getRooms()[1].repair();
+        hotel.getRooms()[2].serve();
 
-        hotel.getRooms()[4].setPrice(199);
-        hotel.getServices()[0].setPrice(199);
+        System.out.println(hotel);
+        System.out.println();
+        System.out.println(hotel.getRooms()[0].isBusy());
+        System.out.println(hotel.getRooms()[1].isRepair());
+        System.out.println(hotel.getRooms()[2].isServe());
+        System.out.println(hotel.getRooms()[0].getPrice());
+        System.out.println(hotel.getServices()[0].getPrice());
 
-        hotel.addRoom();
-        hotel.addService();
+        hotel.getRooms()[0].evict();
+        hotel.getRooms()[1].endRepair();
+        hotel.getRooms()[2].endServe();
 
         System.out.println();
-        System.out.println(hotel.toString());
+        System.out.println(hotel);
     }
 }
