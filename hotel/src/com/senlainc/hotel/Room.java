@@ -1,9 +1,9 @@
 package com.senlainc.hotel;
 
 public class Room {
-    private boolean busy = false;
-    private boolean repair = false;
-    private boolean serve = false;
+    private boolean busy;
+    private boolean repair;
+    private boolean serve;
     private double price;
 
     public boolean isBusy() {

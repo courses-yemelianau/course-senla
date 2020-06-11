@@ -3,9 +3,9 @@ package com.senlainc.hotel;
 import java.util.Arrays;
 
 public class Hotel {
-    private int roomsCount = 0;
+    private int roomsCount;
+    private int servicesCount;
     private Room[] rooms = new Room[roomsCount];
-    private int servicesCount = 0;
     private Service[] services = new Service[servicesCount];
 
     public Room addRoom() {
