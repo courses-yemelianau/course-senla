@@ -1,7 +1,6 @@
 package com.senlainc.hotel;
 
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -9,9 +8,9 @@ public class Room {
     public static final String PRICE = "PRICE";
     public static final String CAPACITY = "CAPACITY";
     public static final String STARS = "STARS";
-    public static final Comparator<Room> PriceComparator = Comparator.comparing(Room::getPrice);
-    public static final Comparator<Room> CapacityComparator = Comparator.comparing(Room::getCapacity);
-    public static final Comparator<Room> StarsComparator = Comparator.comparing(Room::getStars);
+    public static final Comparator<Room> PRICE_COMPARATOR = Comparator.comparing(Room::getPrice);
+    public static final Comparator<Room> CAPACITY_COMPARATOR = Comparator.comparing(Room::getCapacity);
+    public static final Comparator<Room> STARS_COMPARATOR = Comparator.comparing(Room::getStars);
 
     private boolean busy;
     private boolean repair;
@@ -21,11 +20,11 @@ public class Room {
     private final int stars;
     private double price;
 
-    private final int guestsPoolLength = 3;
-    private final Guest[] guestsPool = new Guest[guestsPoolLength];
+    private final int guestsHistoryLength = 3;
+    private final Guest[] guestsHistory = new Guest[guestsHistoryLength];
     private Guest guest;
 
-    Room(int capacity, int stars) {
+    public Room(int capacity, int stars) {
         this.capacity = capacity;
         this.stars = stars;
         this.price = Math.pow(stars, 2) * capacity * 10 + 99;
@@ -47,8 +46,8 @@ public class Room {
     public void evict() {
         if (isBusy()) {
             this.busy = false;
-            System.arraycopy(guestsPool, 1, guestsPool, 0, guestsPool.length - 1);
-            guestsPool[guestsPool.length - 1] = new Guest(this.guest);
+            System.arraycopy(guestsHistory, 1, guestsHistory, 0, guestsHistory.length - 1);
+            guestsHistory[guestsHistory.length - 1] = this.guest;
             this.guest = null;
         }
     }
@@ -98,22 +97,15 @@ public class Room {
     }
 
     public Date getCheckOutDate() {
-        if (guest != null) {
-            Calendar c = Calendar.getInstance();
-            c.setTime(guest.getCheckInDate());
-            c.add(Calendar.MONTH, guest.getMonthsCount());
-            return c.getTime();
-        } else {
-            return new Date();
-        }
+        return guest != null ? guest.getCheckOutDate() : new Date();
     }
 
-    public double check() {
+    public double checkCost() {
         return guest != null ? price * guest.getMonthsCount() : 0;
     }
 
-    public Guest[] getGuestsPool() {
-        return guestsPool;
+    public Guest[] getGuestsHistory() {
+        return guestsHistory;
     }
 
     public Guest getGuest() {
@@ -133,8 +125,8 @@ public class Room {
                 ", capacity=" + capacity +
                 ", stars=" + stars +
                 ", price=" + price +
-                ", guestsPoolLength=" + guestsPoolLength +
-                ", guestsPool=" + Arrays.toString(guestsPool) +
+                ", guestsPoolLength=" + guestsHistoryLength +
+                ", guestsPool=" + Arrays.toString(guestsHistory) +
                 ", guest=" + guest +
                 '}';
     }

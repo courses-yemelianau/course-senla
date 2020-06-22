@@ -58,25 +58,27 @@ public class Test {
         hotel.getRooms()[2].settle(hotel.getGuests()[3], 3);
         hotel.getRooms()[0].settle(hotel.getGuests()[4], 2);
 
-        System.out.println(Arrays.toString(hotel.getGuestsBy(Guest.NAME)));
-        System.out.println(Arrays.toString(hotel.getGuestsBy(Guest.DATE)));
+        System.out.println(Arrays.toString(hotel.getRoomsWithGuestsBy(Guest.NAME)));
+        System.out.println(Arrays.toString(hotel.getRoomsWithGuestsBy(Guest.DATE)));
         System.out.println();
 
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.MONTH, 1);
-        System.out.println(Arrays.toString(hotel.evictBy(c.getTime())));
+        System.out.println(Arrays.toString(hotel.evictedBy(c.getTime())));
         System.out.println();
 
-        System.out.println(hotel.getRooms()[2].check());
+        System.out.println(hotel.getRooms()[2].checkCost());
         System.out.println();
 
-        System.out.println(Arrays.toString(hotel.getRooms()[0].getGuestsPool()));
+        System.out.println(Arrays.toString(hotel.getRooms()[0].getGuestsHistory()));
         hotel.getRooms()[0].evict();
-        System.out.println(Arrays.toString(hotel.getRooms()[0].getGuestsPool()));
+        System.out.println(Arrays.toString(hotel.getRooms()[0].getGuestsHistory()));
         System.out.println();
 
-        hotel.getGuests()[1].addService(hotel.getServices()[0]);
+        hotel.getGuests()[1]
+                .addService(hotel.getServices()[0])
+                .addService(hotel.getServices()[0]);
         hotel.getGuests()[1].addService(hotel.getServices()[1]);
         hotel.getGuests()[1].addService(hotel.getServices()[2]);
         System.out.println(Arrays.toString(hotel.getGuests()[1].getServicesBy(Service.PRICE)));

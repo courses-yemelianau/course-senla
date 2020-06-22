@@ -10,10 +10,10 @@ public class Service {
     private double price;
     private final Date date = new Date();
 
-    public static final Comparator<Service> PriceComparator = Comparator.comparing(Service::getPrice);
-    public static final Comparator<Service> DateComparator = Comparator.comparing(Service::getDate);
+    public static final Comparator<Service> PRICE_COMPARATOR = Comparator.comparing(Service::getPrice);
+    public static final Comparator<Service> DATE_COMPARATOR = Comparator.comparing(Service::getDate);
 
-    Service(double price) {
+    public Service(double price) {
         this.price = price;
     }
 

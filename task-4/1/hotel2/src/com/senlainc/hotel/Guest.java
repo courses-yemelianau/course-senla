@@ -1,6 +1,7 @@
 package com.senlainc.hotel;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Guest {
@@ -15,7 +16,7 @@ public class Guest {
     private int servicesCount;
     private Service[] services = new Service[servicesCount];
 
-    Guest(String name) {
+    public Guest(String name) {
         this.name = name;
     }
 
@@ -23,12 +24,19 @@ public class Guest {
         return name;
     }
 
-    public Date getCheckInDate() {
-        return checkInDate;
-    }
-
     public void setCheckInDate(Date checkInDate) {
         this.checkInDate = checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        if (checkInDate != null) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(checkInDate);
+            c.add(Calendar.MONTH, monthsCount);
+            return c.getTime();
+        } else {
+            return new Date();
+        }
     }
 
     public int getMonthsCount() {
@@ -52,10 +60,10 @@ public class Guest {
         System.arraycopy(services, 0, result, 0, servicesCount);
         switch (by) {
             case Service.PRICE:
-                Arrays.sort(result, Service.PriceComparator);
+                Arrays.sort(result, Service.PRICE_COMPARATOR);
                 break;
             case Service.DATE:
-                Arrays.sort(result, Service.DateComparator);
+                Arrays.sort(result, Service.DATE_COMPARATOR);
                 break;
         }
         return result;
@@ -70,15 +78,5 @@ public class Guest {
                 ", servicesCount=" + servicesCount +
                 ", services=" + Arrays.toString(services) +
                 '}';
-    }
-
-    public Guest(String name, Date checkInDate, int monthsCount) {
-        this.name = name;
-        this.checkInDate = checkInDate;
-        this.monthsCount = monthsCount;
-    }
-
-    public Guest(Guest guest) {
-        this(guest.getName(), guest.getCheckInDate(), guest.getMonthsCount());
     }
 }

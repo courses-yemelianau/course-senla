@@ -62,13 +62,13 @@ public class Hotel {
         System.arraycopy(rooms, 0, result, 0, rooms.length);
         switch (by) {
             case Room.PRICE:
-                Arrays.sort(result, Room.PriceComparator);
+                Arrays.sort(result, Room.PRICE_COMPARATOR);
                 break;
             case Room.CAPACITY:
-                Arrays.sort(result, Room.CapacityComparator);
+                Arrays.sort(result, Room.CAPACITY_COMPARATOR);
                 break;
             case Room.STARS:
-                Arrays.sort(result, Room.StarsComparator);
+                Arrays.sort(result, Room.STARS_COMPARATOR);
                 break;
         }
         return result;
@@ -93,7 +93,7 @@ public class Hotel {
         return guestsCount;
     }
 
-    public Room[] getGuestsBy(String by) {
+    public Room[] getRoomsWithGuestsBy(String by) {
         Room[] result = new Room[roomsCount - emptyRoomsCount()];
         int i = 0;
         for (Room room : this.rooms) {
@@ -112,18 +112,15 @@ public class Hotel {
         return result;
     }
 
-    public Room[] evictBy(Date date) {
+    public Room[] evictedBy(Date date) {
         int count = 0;
-        for (Room room : rooms) {
-            if (room.getCheckOutDate().compareTo(date) < 0) {
-                ++count;
-            }
-        }
         Room[] result = new Room[count];
-        count = 0;
         for (Room room : rooms) {
             if (room.getCheckOutDate().compareTo(date) < 0) {
-                result[count++] = room;
+                Room[] temp = new Room[++count];
+                System.arraycopy(result, 0, temp, 0, result.length);
+                temp[result.length] = room;
+                result = temp;
             }
         }
         return result;
@@ -142,7 +139,7 @@ public class Hotel {
     public double[] servicesPrices() {
         Service[] services = new Service[servicesCount];
         System.arraycopy(this.services, 0, services, 0, servicesCount);
-        Arrays.sort(services, Service.PriceComparator);
+        Arrays.sort(services, Service.PRICE_COMPARATOR);
         double[] prices = new double[servicesCount];
         int i = 0;
         for (Service service : services) {
